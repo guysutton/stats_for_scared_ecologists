@@ -1,2 +1,3 @@
-# stats_for_scared_ecologists
+# Statistics for Scared Ecologists
+
 Statistics blog in R and Julia
