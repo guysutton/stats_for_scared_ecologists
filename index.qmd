@@ -20,3 +20,23 @@ title-block-banner: true
 library(here)
 knitr::include_graphics(here::here("./SFSE_blog_logo.png"), dpi = NA)
 ```
+
+```{r redirect_netlify}
+#| echo: false
+
+# List names of post folders
+posts <- list.dirs(
+  path = here::here("posts"),
+  full.names = FALSE,
+  recursive = FALSE
+)
+
+# Extract the slugs
+slugs <- gsub("^.*_", "", posts)
+
+# Lines to insert to a netlify _redirect file
+redirects <- paste0("/", slugs, " ", "/posts/", posts)
+
+# Write the _redirect file
+writeLines(redirects, here::here("_site", "_redirects"))
+```
